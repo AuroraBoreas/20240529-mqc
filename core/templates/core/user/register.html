@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+{% include 'partials/_head.html' %}
+{% endblock %}
+
+{% block title %}
+<title>Register Page</title>
+{% endblock %}
+
+{% block navbar %}
+{% include 'partials/_navbar.html' %}
+{% endblock %}
+
+{% block graph %}
+<div class="container-fluid sm border mt-3" style="width:30%">
+    <div class="row justify-content-center align-items-center">
+        <form method='post'>
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Join Today</legend>
+                {% csrf_token %}{{ form|crispy }}
+            </fieldset>
+            <div class="form-group mt-2">
+                <button class="btn btn-outline-info" type="submit">Sign Up</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already Have An Account? <a href="{% url 'user:login' %}" class="ml-2">Sign In</a>
+            </small>
+        </div>
+    </div>
+</div>
+{% endblock %}

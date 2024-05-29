@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+{% include 'partials/_head.html' %}
+{% endblock %}
+
+{% block title %}
+<title>Dataset Page</title>
+{% endblock %}
+
+{% block svg01 %}
+{% include 'partials/_svg01.html' %}
+{% endblock %}
+
+{% block theme %}
+{% include 'partials/_theme.html' %}
+{% endblock %}
+
+{% block svg02 %}
+{% include 'partials/_svg02.html' %}
+{% endblock %}
+
+{% block navbar %}
+{% include 'partials/_navbar.html' %}
+{% endblock %}
+
+{% block graph %}
+<div class="container-fluid">
+<div class="row">
+    {% include 'partials/_sidebar.html' %}
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        {% include 'partials/_data.html' %}
+    </main>
+    </div>
+</div>
+{% endblock %}

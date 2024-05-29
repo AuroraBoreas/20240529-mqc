@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+{% include 'partials/_head.html' %}
+{% endblock %}
+
+{% block title %}
+<title>Dashboard</title>
+{% endblock %}
+
+{% block svg01 %}
+{% include 'partials/_svg01.html' %}
+{% endblock %}
+
+{% block theme %}
+{% include 'partials/_theme.html' %}
+{% endblock %}
+
+{% block svg02 %}
+{% include 'partials/_svg02.html' %}
+{% endblock %}
+
+{% block navbar %}
+{% include 'partials/_navbar.html' %}
+{% endblock %}
+
+{% block graph %}
+<div class="container-fluid">
+  <div class="row">
+      {% include 'partials/_sidebar.html' %}
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        {% include 'partials/_charts.html' %}
+      </main>
+    </div>
+</div>
+{% endblock %}
+
+{% block customjs %}
+<script src="{% static 'js/chart.js' %}"></script>
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script>
+  var c = [];
+  function draw(i, t, a, b, d, e) {
+    const ctx = document.getElementById(i);
+    var x = new Chart(ctx, {
+      type: t,
+      data: {
+        labels: a,
+        datasets: [{
+          label: b,
+          data: d,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: e,
+          },
+        },
+      }
+    });
+    c.push(x);
+  };
+  function destroy() {
+    c.forEach(function(chart) {
+      chart.destroy();
+    });
+    c = [];
+  };
+  function f() {
+    $.ajax({
+      method:'get',
+      dataType: 'json',
+      url: '{% url "mqc:getJsonData" %}',
+      success: function(response){
+        destroy();
+        const c = response.context['c'];
+        c.forEach(e => {
+          const d = response.context[e];
+          draw(e, d.type, d.labels, d.label, d.data, d.title);
+        });
+      },
+      error: function(xhr, status, error){
+        console.error('Error fetching data:', error);
+      }
+    })
+  };
+  $(document).ready(function(){
+    f();
+  });
+</script>
+{% endblock %}

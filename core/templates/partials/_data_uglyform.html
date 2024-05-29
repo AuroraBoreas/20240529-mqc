@@ -1,0 +1,89 @@
+{% load widget_tweaks %}
+<!-- {% load crispy_forms_tags %} -->
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Dataset</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+        <a href="{% url 'mqc:create' %}" class="btn btn-sm btn-outline-secondary">Create</a>
+        {% include 'partials/parts/_download.html' %}
+      </div>
+    </div>
+  </div>
+  {% include 'partials/parts/_messages.html' %}
+  <!-- this is not great -->
+  <div class="container">
+    <div class="row justify-content-start">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <form class="row gx-3 gy-2 align-items-center" method="GET" action="{% url 'mqc:dataset' %}">
+              {% csrf_token %}
+              <div class="form-group">
+                {{ filterform|crispy }}
+              </div>
+              <div class="col-auto">
+                <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- handmade filter form: 20240511 -->
+  <div class="container mt-2">
+    <form class="row gy-2 gx-3 align-items-center">
+      {% csrf_token %}
+      <div class="col-auto">
+        <label class="visually-hidden" for="autoSizingInput">Id</label>
+        {% render_field filterform.id type="text" class="form-control-sm" id="autoSizingInput" placeholder="Id" %}
+      </div>
+      <div class="col-auto">
+        <label class="visually-hidden" for="autoSizingInputGroup">責区</label>
+        <div class="input-group">
+          <div class="input-group-text">責区</div>
+          {% render_field filterform.責区 class="form-control-sm" id="autoSizingInput" %}
+        </div>
+      </div>
+      <div class="col-auto">
+        <label class="visually-hidden" for="autoSizingInputGroup">責任者</label>
+        <div class="input-group">
+          <div class="input-group-text">責任者</div>
+          {% render_field filterform.責任者 class="form-control-sm" id="autoSizingInput" %}
+        </div>
+      </div>
+      <div class="col-auto">
+        <label class="visually-hidden" for="autoSizingInputGroup">製品分</label>
+        <div class="input-group">
+          <div class="input-group-text">製品分</div>
+          {% render_field filterform.製品分 class="form-control-sm" id="autoSizingInput" %}
+        </div>
+      </div>
+      <div class="col-auto">
+        <label class="visually-hidden" for="autoSizingInputGroup">分類</label>
+        <div class="input-group">
+          <div class="input-group-text">分類</div>
+          {% render_field filterform.分類 class="form-control-sm" id="autoSizingInput" %}
+        </div>
+      </div>
+      <div class="col-auto">
+        <label class="visually-hidden" for="autoSizingInputGroup">案件名</label>
+        <div class="input-group">
+          <div class="input-group-text">案件名</div>
+          <!-- {% render_field filterform.案件名 class="form-control-sm" id="autoSizingInput" placeholder="contains.." %} -->
+          {% render_field filterform.id type="text" class+="form-control-sm" id="autoSizingInput" placeholder="contains.." %}
+        </div>
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="mt-3">
+    {% include 'partials/parts/_mqctable.html' %}
+    {% include 'partials/parts/_pagination.html' %}
+  </div>
+</div>

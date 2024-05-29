@@ -1,0 +1,19 @@
+{% load static %}
+
+<html lang="en" data-bs-theme="auto">
+  <head>
+    {% block head %}{% endblock %}
+    {% block title %}{% endblock %}
+  </head>
+  <body>
+    {% block svg01 %}{% endblock %}
+    {% block theme %}{% endblock %}
+    {% block svg02 %}{% endblock %}
+    {% block navbar %}{% endblock %}
+    {% block graph %}{% endblock %}
+    {% block content %}{% endblock %}
+    {% block customjs %}{% endblock %}
+    {% comment %} {% include 'partials/_footer.html' %} {% endcomment %}
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  </body>
+</html>

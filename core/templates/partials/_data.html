@@ -1,0 +1,106 @@
+{% load widget_tweaks %}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Dataset</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+        <a href="{% url 'mqc:create' %}" class="btn btn-sm btn-outline-secondary">Create</a>
+        {% include 'partials/parts/_download.html' %}
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center align-items-center message" style='width:auto'>
+  {% include 'partials/parts/_messages.html' %}
+  </div>
+  <!-- this is not great -->
+  <!-- handmade filter form: 20240511 -->
+  <div class="container-fluid mt-2 border-bottom">
+    <form class="row gy-2 gx-3 align-items-center" id="filterForm">
+      {% csrf_token %}
+      {% comment %} <div class="col-auto">
+        <label class="visually-hidden" for="autoSizingInput">Id</label>
+        <div class="input-group">
+          <div class="input-group-text">Id</div>
+          {% render_field filterform.id type="text" class="form-control-sm" id="autoSizingInput" placeholder="Id" %}
+        </div>
+      </div> {% endcomment %}
+      <div class="col-auto">
+        <label class="visually-hidden" for="autoSizingInputGroup">責区</label>
+        <div class="input-group">
+          <div class="input-group-text">責区</div>
+          {% render_field filterform.責区 class="form-control-sm" id="autoSizingInput" %}
+        </div>
+      </div>
+      <div class="col-auto">
+        <label class="visually-hidden" for="autoSizingInputGroup">責任者</label>
+        <div class="input-group">
+          <div class="input-group-text">責任者</div>
+          {% render_field filterform.責任者 class="form-control-sm" id="autoSizingInput" %}
+        </div>
+      </div>
+      <div class="col-auto">
+        <label class="visually-hidden" for="autoSizingInputGroup">製品分</label>
+        <div class="input-group">
+          <div class="input-group-text">製品分</div>
+          {% render_field filterform.製品分 class="form-control-sm" id="autoSizingInput" %}
+        </div>
+      </div>
+      <div class="col-auto">
+        <label class="visually-hidden" for="autoSizingInputGroup">分類</label>
+        <div class="input-group">
+          <div class="input-group-text">分類</div>
+          {% render_field filterform.分類 class="form-control-sm" id="autoSizingInput" %}
+        </div>
+      </div>
+      {% comment %} <div class="col-auto">
+        <label class="visually-hidden" for="autoSizingInputGroup">進捗</label>
+        <div class="input-group">
+          <div class="input-group-text">進捗</div>
+          {% render_field filterform.進捗 class+="form-control-sm" id="autoSizingInput" %}
+        </div>
+      </div> {% endcomment %}
+      <div class="col-auto">
+        <label class="visually-hidden" for="autoSizingInputGroup">発生日</label>
+        <div class="input-group">
+          <div class="input-group-text">発生日</div>
+          {% render_field filterform.発生日 class+="form-control-sm" id="autoSizingInput" %}
+        </div>
+      </div>
+      <div class="col-auto">
+        <label class="visually-hidden" for="autoSizingInputGroup">発生場所</label>
+        <div class="input-group">
+          <div class="input-group-text">発生場所</div>
+          {% render_field filterform.発生場所 class="form-control-sm" id="autoSizingInput" %}
+        </div>
+      </div>
+      <div class="col-auto">
+        <label class="visually-hidden" for="autoSizingInputGroup">案件名</label>
+        <div class="input-group">
+          <div class="input-group-text">案件名</div>
+          {% render_field filterform.案件名 type="search" class+="form-control-sm" id="autoSizingInput" placeholder="contains.." %}
+        </div>
+      </div>
+      <div class="col-auto">
+        <label class="visually-hidden" for="autoSizingInputGroup">機種名型番</label>
+        <div class="input-group">
+          <div class="input-group-text">機種名型番</div>
+          {% render_field filterform.機種名型番 type="search" class+="form-control-sm" id="autoSizingInput" placeholder="contains.." %}
+        </div>
+      </div>
+      <div class="col-auto">
+        <label class="visually-hidden" for="autoSizingInputGroup">不良症状内容</label>
+        <div class="input-group">
+          <div class="input-group-text">不良症状内容</div>
+          {% render_field filterform.不良症状内容 type="search" class+="form-control-sm" id="autoSizingInput" placeholder="contains.." %}
+        </div>
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+      </div>
+    </form>
+  </div>
+  <div class="mt-3">
+    {% include 'partials/parts/_mqctable.html' %}
+    {% include 'partials/parts/_pagination.html' %}
+  </div>
+</div>

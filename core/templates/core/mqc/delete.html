@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% include 'partials/_head.html' %}
+{% endblock %}
+
+{% block title %}
+<title>Detail Page</title>
+{% endblock %}
+
+{% block navbar %}
+{% include 'partials/_navbar.html' %}
+{% endblock %}
+
+{% block graph %}
+<div class='container mt-1 ml-3 offset-md-2' style='width:75%'>
+    <div class="row justify-content-center align-items-center message" style='width:auto'>
+    {% include 'partials/parts/_messages.html' %}
+    </div>
+    <div class="row" style='width:auto'>
+        <form class="d-flex justify-content-between align-items-center align-items-center" method='post'>
+            {% csrf_token %}
+            <h2>
+                Delete Record Id:{{majorqualitycase.id}}, {{majorqualitycase.案件名|truncatechars:15}}?
+            </h2>
+            <button class='btn btn-danger' type='submit' id='button-addon2'>Confirm</button>
+        </form>
+    </div>
+    <div class="row">
+        <table class='table table-hover'>
+            <thead>
+                <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">Detail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Id</th>
+                    <td>{{majorqualitycase.id}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">進捗</th>
+                    <td>{{majorqualitycase.進捗|floatformat:1}}%</td>
+                </tr>
+                <tr>
+                    <th scope="row">市場発生</th>
+                    <td>{{majorqualitycase.市場発生|yesno}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">再発防止</th>
+                    <td>{{majorqualitycase.再発防止|yesno}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">出荷停止</th>
+                    <td>{{majorqualitycase.出荷停止|yesno}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">責区</th>
+                    <td>{{majorqualitycase.責区.name}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">責任者</th>
+                    <td>{{majorqualitycase.責任者.username}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">TAT</th>
+                    <td>{{majorqualitycase.TAT}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">製品分</th>
+                    <td>{{majorqualitycase.製品分.name}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">分類</th>
+                    <td>{{majorqualitycase.分類.name}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">案件名</th>
+                    <td>{{majorqualitycase.案件名}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">機種名型番</th>
+                    <td>{{majorqualitycase.機種名型番}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">進捗状況</th>
+                    <td>{{majorqualitycase.進捗状況}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">発生場所</th>
+                    <td>{{majorqualitycase.発生場所.name}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">発生日</th>
+                    <td>{{majorqualitycase.発生日|date:'Y-m-d'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">不良症状内容</th>
+                    <td>{{majorqualitycase.不良症状内容}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">保留対象</th>
+                    <td>{{majorqualitycase.保留対象}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">依頼日</th>
+                    <td>{{majorqualitycase.依頼日|date:'Y-m-d'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">停止日</th>
+                    <td>{{majorqualitycase.停止日|date:'Y-m-d'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">解除日</th>
+                    <td>{{majorqualitycase.解除日|date:'Y-m-d'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">単品在庫</th>
+                    <td>{{majorqualitycase.単品在庫}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">半製品在庫</th>
+                    <td>{{majorqualitycase.半製品在庫}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">完成品在庫</th>
+                    <td>{{majorqualitycase.完成品在庫}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">外部在庫</th>
+                    <td>{{majorqualitycase.外部在庫}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">対応内容</th>
+                    <td>{{majorqualitycase.対応内容}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">実施予定日</th>
+                    <td>{{majorqualitycase.実施予定日|date:'Y-m-d'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">実施部署</th>
+                    <td>{{majorqualitycase.実施部署.name}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">実施者</th>
+                    <td>{{majorqualitycase.実施者.username}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">発生原因</th>
+                    <td>{{majorqualitycase.発生原因}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">なぜなぜ</th>
+                    <td>{{majorqualitycase.なぜなぜ}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">分析完了予定日</th>
+                    <td>{{majorqualitycase.分析完了予定日|date:'Y-m-d'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">分析完了実際日</th>
+                    <td>{{majorqualitycase.分析完了実際日|date:'Y-m-d'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">是正処置発生対策</th>
+                    <td>{{majorqualitycase.是正処置発生対策}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">是正処置流出対策</th>
+                    <td>{{majorqualitycase.是正処置流出対策}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">是正処置再発防止</th>
+                    <td>{{majorqualitycase.是正処置再発防止}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">是正完了予定日</th>
+                    <td>{{majorqualitycase.是正完了予定日|date:'Y-m-d'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">是正完了実際日</th>
+                    <td>{{majorqualitycase.是正完了実際日|date:'Y-m-d'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">CLOSE日</th>
+                    <td>{{majorqualitycase.CLOSE日|date:'Y-m-d'}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Attachment</th>
+                    <td>
+                        {% if majorqualitycase.file %}
+                        <a href='{{majorqualitycase.file.url}}' download>Download</a>
+                        {% else %}
+                        No file attached
+                        {% endif %}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+{% endblock %}

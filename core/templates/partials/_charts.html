@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Dashboard</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+        <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Share</button> -->
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center align-items-center message" style='width:auto'>
+  {% include 'partials/parts/_messages.html' %}
+  </div>
+  <div class="container text-center" style="width:auto">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <p>Chart1: 月別推移</p>
+          <div class="card-body">
+            <canvas class="my-2 w-100" id="myChartPerMonthOfCurrentYear" width="auto" height="auto"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col">
+        <div class="card">
+          <p>Chart2: 分類</p>
+          <div class="card-body">
+            <canvas class="my-2 w-100" id="myChartPerDivision" width="auto" height="auto"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <p>Chart3: 製品分</p>
+          <div class="card-body">
+            <canvas class="my-2 w-100" id="myChartPerPartCategory" width="auto" height="auto"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col">
+        <div class="card">
+          <p>Chart4: 責区</p>
+          <div class="card-body">
+            <canvas class="my-2 w-100" id="myChartPerResponsibility" width="auto" height="auto"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <p>Chart5: 責任部署</p>
+          <div class="card-body">
+            <canvas class="my-2 w-100" id="myChartPerDepartment" width="auto" height="auto"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col">
+        <div class="card">
+          <p>Chart6: 発生場所</p>
+          <div class="card-body">
+            <canvas class="my-2 w-100" id="myChartPerLocation" width="auto" height="auto"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
