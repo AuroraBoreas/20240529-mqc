@@ -1,0 +1,10 @@
+{
+    "terminal.explorerKind": "external",
+    "terminal.integrated.automationProfile.windows": {
+
+    },
+    "editor.fontFamily": "Consolas, 'Courier New', monospace, 'MesloLGM Nerd Font'",
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "terminal.integrated.fontFamily": " 'MesloLGM Nerd Font'",
+    "terminal.integrated.cwd": ""
+}

@@ -85,7 +85,7 @@ class MajorQualityCase(models.Model):
     )
     responsibleUser = models.ForeignKey(
         AppUser, on_delete=models.CASCADE,
-        null=True, blank=True, related_name='責任者', name='責任者'
+        null=True, blank=True, related_name='mqc_cases', name='責任者'
     )
     tat = models.CharField(max_length=255, null=False, blank=True, name='TAT')
     partCategory = models.ForeignKey(
@@ -122,7 +122,7 @@ class MajorQualityCase(models.Model):
     )
     handlingUser = models.ForeignKey(
         AppUser, on_delete=models.CASCADE, 
-        null=True, blank=True, related_name='実施者', name='実施者'
+        null=True, blank=True, related_name='handled_cases', name='実施者'
     )
     rootCause = models.TextField(null=True, blank=True, name='発生原因')
     omissionCause = models.TextField(null=True, blank=True, name='流出原因')
@@ -204,7 +204,7 @@ def get_dataset_per_month_of_current_year() -> dict[str, typing.Any]:
         }
         return context
     except MajorQualityCase.DoesNotExist:
-        return EMPTY_CONTEXT    
+        return EMPTY_CONTEXT
 
 def generate_labels_and_data(
     qs: models.QuerySet,
