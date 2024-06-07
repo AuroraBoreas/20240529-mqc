@@ -14,26 +14,24 @@
 {% endblock %}
 
 {% block graph %}
-<div class='container mt-1 ml-3 offset-md-2' style='width:75%'>
-    <div class="row justify-content-center align-items-center message" style='width:auto'>
-    {% include 'partials/parts/_messages.html' %}
+<div class='container mt-1'>
+    <div class="row justify-content-center align-items-center message">
+        <div class="col-lg-8">
+            {% include 'partials/parts/_messages.html' %}
+        </div>
     </div>
-    <div class="row" style='width:auto'>
-        <h2 class="d-flex justify-content-between align-items-center">Create or Update</h2>
-    </div>
-    <div class='row' style='width:auto'>
-        <div class='card-dec'>
-            <div class='card'>
-                <div class='card-body'>
-                    <form class='row gy-2 gx-3 align-items-center' method='post' enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <div class='form-group'>
-                            {{ form|crispy }}
-                        </div>
-                        <button type='submit' class='btn btn-primary mt-2'>Save</button>
-                    </form>
+    <div class="row justify-content-center">
+        <div class="col-lg-8 gy-3">
+            <h2 class="d-flex mb-2">Create or Update</h2>
+            <form method='post' enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class='form-group'>
+                    {{ form|crispy }}
                 </div>
-            </div>
+                <div class="form-control text-center border-0">
+                    <button type='submit' class='btn btn-primary mt-2'>Save</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

@@ -13,18 +13,20 @@
 {% endblock %}
 
 {% block graph %}
-<div class="container mt-3" style="width:50%">
-<div class="row justify-content-center align-items-center">
-    <h3>You have been logged out</h3>
-    <div class="border-top pt-3">
-        <small class="text-muted">
-            <a href="{% url 'user:login' %}">Log In Again</a>
-        </small>
-        <div class="text-muted mt-2">
-            <p>Redirecting in 3 seconds...</p>
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <h3>You have been logged out</h3>
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    <a href="{% url 'user:login' %}">Log In Again</a>
+                </small>
+                <div class="text-muted mt-2">
+                    <p>Redirecting in 3 seconds...</p>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 </div>
 {% endblock %}
 

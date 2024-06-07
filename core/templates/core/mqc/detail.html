@@ -14,185 +14,195 @@
 
 
 {% block graph %}
-<div class='container mt-1 ml-3 offset-md-2' style='width:75%'>    
-    {% include 'partials/parts/_messages.html' %}
-    <div class="container">
-        <h2 class="d-flex justify-content-between align-items-center">
-            Detail Of Record 
-            <a href="{% url 'mailing:send' %}" class="btn btn-primary btn-sm">Send Email</a>
-        </h2>
+<div class='container mt-1'>    
+    <div class="row justify-content-center align-items-center message">
+        <div class="col-lg-8">
+            {% include 'partials/parts/_messages.html' %}
+        </div>
     </div>
-    <table class='table table-hover'>
-        <thead>
-            <tr>
-                <th scope="col">Item</th>
-                <th scope="col">Detail</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">Id</th>
-                <td>{{object.id}}</td>
-            </tr>
-            <tr>
-                <th scope="row">進捗</th>
-                <td>{{object.進捗|floatformat:1}}%</td>
-            </tr>
-            <tr>
-                <th scope="row">市場発生</th>
-                <td>{{object.市場発生|yesno}}</td>
-            </tr>
-            <tr>
-                <th scope="row">再発防止</th>
-                <td>{{object.再発防止|yesno}}</td>
-            </tr>
-            <tr>
-                <th scope="row">出荷停止</th>
-                <td>{{object.出荷停止|yesno}}</td>
-            </tr>
-            <tr>
-                <th scope="row">責区</th>
-                <td>{{object.責区.name}}</td>
-            </tr>
-            <tr>
-                <th scope="row">責任者</th>
-                <td>{{object.責任者.username}}</td>
-            </tr>
-            <tr>
-                <th scope="row">TAT</th>
-                <td>{{object.TAT}}</td>
-            </tr>
-            <tr>
-                <th scope="row">製品分</th>
-                <td>{{object.製品分.name}}</td>
-            </tr>
-            <tr>
-                <th scope="row">分類</th>
-                <td>{{object.分類.name}}</td>
-            </tr>
-            <tr>
-                <th scope="row">案件名</th>
-                <td>{{object.案件名}}</td>
-            </tr>
-            <tr>
-                <th scope="row">機種名型番</th>
-                <td>{{object.機種名型番}}</td>
-            </tr>
-            <tr>
-                <th scope="row">進捗状況</th>
-                <td>{{object.進捗状況}}</td>
-            </tr>
-            <tr>
-                <th scope="row">発生場所</th>
-                <td>{{object.発生場所.name}}</td>
-            </tr>
-            <tr>
-                <th scope="row">発生日</th>
-                <td>{{object.発生日|date:'Y-m-d'}}</td>
-            </tr>
-            <tr>
-                <th scope="row">不良症状内容</th>
-                <td>{{object.不良症状内容}}</td>
-            </tr>
-            <tr>
-                <th scope="row">保留対象</th>
-                <td>{{object.保留対象}}</td>
-            </tr>
-            <tr>
-                <th scope="row">依頼日</th>
-                <td>{{object.依頼日|date:'Y-m-d'}}</td>
-            </tr>
-            <tr>
-                <th scope="row">停止日</th>
-                <td>{{object.停止日|date:'Y-m-d'}}</td>
-            </tr>
-            <tr>
-                <th scope="row">解除日</th>
-                <td>{{object.解除日|date:'Y-m-d'}}</td>
-            </tr>
-            <tr>
-                <th scope="row">単品在庫</th>
-                <td>{{object.単品在庫}}</td>
-            </tr>
-            <tr>
-                <th scope="row">半製品在庫</th>
-                <td>{{object.半製品在庫}}</td>
-            </tr>
-            <tr>
-                <th scope="row">完成品在庫</th>
-                <td>{{object.完成品在庫}}</td>
-            </tr>
-            <tr>
-                <th scope="row">外部在庫</th>
-                <td>{{object.外部在庫}}</td>
-            </tr>
-            <tr>
-                <th scope="row">対応内容</th>
-                <td>{{object.対応内容}}</td>
-            </tr>
-            <tr>
-                <th scope="row">実施予定日</th>
-                <td>{{object.実施予定日|date:'Y-m-d'}}</td>
-            </tr>
-            <tr>
-                <th scope="row">実施部署</th>
-                <td>{{object.実施部署.name}}</td>
-            </tr>
-            <tr>
-                <th scope="row">実施者</th>
-                <td>{{object.実施者.username}}</td>
-            </tr>
-            <tr>
-                <th scope="row">発生原因</th>
-                <td>{{object.発生原因}}</td>
-            </tr>
-            <tr>
-                <th scope="row">なぜなぜ</th>
-                <td>{{object.なぜなぜ}}</td>
-            </tr>
-            <tr>
-                <th scope="row">分析完了予定日</th>
-                <td>{{object.分析完了予定日|date:'Y-m-d'}}</td>
-            </tr>
-            <tr>
-                <th scope="row">分析完了実際日</th>
-                <td>{{object.分析完了実際日|date:'Y-m-d'}}</td>
-            </tr>
-            <tr>
-                <th scope="row">是正処置発生対策</th>
-                <td>{{object.是正処置発生対策}}</td>
-            </tr>
-            <tr>
-                <th scope="row">是正処置流出対策</th>
-                <td>{{object.是正処置流出対策}}</td>
-            </tr>
-            <tr>
-                <th scope="row">是正処置再発防止</th>
-                <td>{{object.是正処置再発防止}}</td>
-            </tr>
-            <tr>
-                <th scope="row">是正完了予定日</th>
-                <td>{{object.是正完了予定日|date:'Y-m-d'}}</td>
-            </tr>
-            <tr>
-                <th scope="row">是正完了実際日</th>
-                <td>{{object.是正完了実際日|date:'Y-m-d'}}</td>
-            </tr>
-            <tr>
-                <th scope="row">CLOSE日</th>
-                <td>{{object.CLOSE日|date:'Y-m-d'}}</td>
-            </tr>
-            <tr>
-                <th scope="row">Attachment</th>
-                <td>
-                    {% if object.file %}
-                    <a href='{{object.file.url}}' download>Download</a>
-                    {% else %}
-                    No file attached
-                    {% endif %}
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <h2 class="d-flex justify-content-between align-items-center">
+                Detail Of Record 
+                <a href="{% url 'mailing:send' %}" class="btn btn-primary btn-sm">Send Email</a>
+            </h2>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <table class='table table-hover'>
+                <thead>
+                    <tr>
+                        <th scope="col">Item</th>
+                        <th scope="col">Detail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Id</th>
+                        <td>{{object.id}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">進捗</th>
+                        <td>{{object.進捗|floatformat:1}}%</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">市場発生</th>
+                        <td>{{object.市場発生|yesno}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">再発防止</th>
+                        <td>{{object.再発防止|yesno}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">出荷停止</th>
+                        <td>{{object.出荷停止|yesno}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">責区</th>
+                        <td>{{object.責区.name}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">責任者</th>
+                        <td>{{object.責任者.username}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">TAT</th>
+                        <td>{{object.TAT}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">製品分</th>
+                        <td>{{object.製品分.name}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">分類</th>
+                        <td>{{object.分類.name}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">案件名</th>
+                        <td>{{object.案件名}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">機種名型番</th>
+                        <td>{{object.機種名型番}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">進捗状況</th>
+                        <td>{{object.進捗状況}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">発生場所</th>
+                        <td>{{object.発生場所.name}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">発生日</th>
+                        <td>{{object.発生日|date:'Y-m-d'}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">不良症状内容</th>
+                        <td>{{object.不良症状内容}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">保留対象</th>
+                        <td>{{object.保留対象}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">依頼日</th>
+                        <td>{{object.依頼日|date:'Y-m-d'}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">停止日</th>
+                        <td>{{object.停止日|date:'Y-m-d'}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">解除日</th>
+                        <td>{{object.解除日|date:'Y-m-d'}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">単品在庫</th>
+                        <td>{{object.単品在庫}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">半製品在庫</th>
+                        <td>{{object.半製品在庫}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">完成品在庫</th>
+                        <td>{{object.完成品在庫}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">外部在庫</th>
+                        <td>{{object.外部在庫}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">対応内容</th>
+                        <td>{{object.対応内容}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">実施予定日</th>
+                        <td>{{object.実施予定日|date:'Y-m-d'}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">実施部署</th>
+                        <td>{{object.実施部署.name}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">実施者</th>
+                        <td>{{object.実施者.username}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">発生原因</th>
+                        <td>{{object.発生原因}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">なぜなぜ</th>
+                        <td>{{object.なぜなぜ}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">分析完了予定日</th>
+                        <td>{{object.分析完了予定日|date:'Y-m-d'}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">分析完了実際日</th>
+                        <td>{{object.分析完了実際日|date:'Y-m-d'}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">是正処置発生対策</th>
+                        <td>{{object.是正処置発生対策}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">是正処置流出対策</th>
+                        <td>{{object.是正処置流出対策}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">是正処置再発防止</th>
+                        <td>{{object.是正処置再発防止}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">是正完了予定日</th>
+                        <td>{{object.是正完了予定日|date:'Y-m-d'}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">是正完了実際日</th>
+                        <td>{{object.是正完了実際日|date:'Y-m-d'}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">CLOSE日</th>
+                        <td>{{object.CLOSE日|date:'Y-m-d'}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Attachment</th>
+                        <td>
+                            {% if object.file %}
+                            <a href='{{object.file.url}}' download>Download</a>
+                            {% else %}
+                            No file attached
+                            {% endif %}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 {% endblock %}
