@@ -79,7 +79,7 @@ form {
   font-size: smaller;
 }
 
-th, thead, td {
+th, thead {
   position: sticky;
   top: 0px;
   font-size: small;

@@ -6,15 +6,13 @@ from django.urls import include
 from django.urls import path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
-from core.user.views import favicon
+
 
 admin.site.site_header = 'Administration'
 admin.site.site_title = 'Explore'
 admin.site.index_title = 'Welcome To The Admin Panel'
 
 urlpatterns = [
-    path('favicon.ico/', favicon),
-
     path(settings.ADMIN_URL, admin.site.urls),    
     
     # User management

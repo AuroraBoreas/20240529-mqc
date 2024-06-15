@@ -5,6 +5,7 @@ app_name = 'mqc'
 
 urlpatterns = [
     # path('', views.index, name='index'),
+    path('favicon.ico/', views.favicon, name='favicon'),
 
     path('', views.dashboard, name='dashboard'),
 
