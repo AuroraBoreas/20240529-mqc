@@ -1,10 +1,14 @@
 from http import HTTPStatus
-import random, typing
-
 from django.test import RequestFactory, TestCase
 from django.urls import reverse
 
-import faker
+class FaviconTests(TestCase):
+    def test_get(self):
+        response = self.client.get('/favicon.ico/')
+        self.assertEqual(response.status_code, HTTPStatus.OK)
+        self.assertEqual(response['Cache-Control'], 'max-age=86400, immutable, public')
+        self.assertEqual(response['Content-Type'], 'image/x-icon')
+        self.assertGreater(len(response.getvalue()), 0)
 
 class DashboardViewTestCase(TestCase):
     def test_dashboard_view(self) -> None:
@@ -55,14 +59,6 @@ class MajorQualityCaseListViewTestCase(TestCase):
 #         get.side_effect = requests.exception.SSLError()
 #         with self.assertRaises(CantListFlavors):
 #             list_flavors_sorted()
-
-class FaviconTests(TestCase):
-    def test_get(self):
-        response = self.client.get("/favicon.ico")
-        self.assertEqual(response.status_code, HTTPStatus.OK)
-        self.assertEqual(response["Cache-Control"], "max-age=86400, immutable, public")
-        self.assertEqual(response["Content-Type"], "image/x-icon")
-        self.assertGreater(len(response.getvalue()), 0)
 
 # Form saves with all fields correctly filled using Django setup with the recommended fix
 def test_form_saves_with_all_fields_correctly_filled_with_django_setup_fixed(self):
